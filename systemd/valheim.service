@@ -1,0 +1,24 @@
+# /etc/systemd/system/valheim.service
+# Runs the Valheim dedicated server (BepInEx-modded) as the steam user.
+
+[Unit]
+Description=Valheim Dedicated Server
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=steam
+Group=steam
+WorkingDirectory=/home/steam/valheim
+ExecStart=/home/steam/valheim/start_server_bepinex.sh
+
+# Valheim saves the world on SIGINT. Give it time to finish before systemd kills it.
+KillSignal=SIGINT
+TimeoutStopSec=90
+
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

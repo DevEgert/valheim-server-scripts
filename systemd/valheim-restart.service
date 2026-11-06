@@ -1,0 +1,9 @@
+# /etc/systemd/system/valheim-restart.service
+# One-shot unit that restarts the Valheim server. Triggered by valheim-restart.timer.
+
+[Unit]
+Description=Restart Valheim Dedicated Server
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/systemctl restart valheim.service

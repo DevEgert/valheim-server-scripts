@@ -1,0 +1,8 @@
+# Never commit world saves, backups or anything with secrets
+*.tar.gz
+*.db
+*.db2
+*.fwl
+*.fwl2
+start_server*.sh
+*.env
