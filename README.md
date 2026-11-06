@@ -8,8 +8,8 @@ I run a modded Valheim server for friends on a VPS. These are the scripts and sy
 
 | Job | Where | When | How |
 |---|---|---|---|
-| World backup | VPS | 05:00 daily | cron → `valheim-backup.sh` → `tar.gz`, keeps 7 days |
 | Server restart | VPS | 08:00 daily | systemd timer → `systemctl restart valheim` |
+| World backup | VPS | 08:10 daily | cron → `valheim-backup.sh` → `tar.gz`, keeps 7 days |
 | Off-site copy | Windows PC | 21:00 daily | Task Scheduler → `scp` from VPS, keeps everything |
 | Crash recovery | VPS | on failure | `Restart=on-failure` in `valheim.service` |
 
@@ -20,7 +20,7 @@ VPS (Ubuntu)                                       Home PC (Windows)
 │   ▲ restart 08:00                        │       │  Task Scheduler 21:00    │
 │ valheim-restart.timer                    │       │   scp -B ...             │
 │                                          │  scp  │   ▼                      │
-│ cron 05:00 → valheim-backup.sh ──────────┼──────►│  C:\Backups\Valheim\     │
+│ cron 08:10 → valheim-backup.sh ──────────┼──────►│  C:\Backups\Valheim\     │
 │   ~/valheim-backups/valheim-DATE.tar.gz  │       │  (full history)          │
 │   (last 7 days)                          │       │                          │
 └──────────────────────────────────────────┘       └──────────────────────────┘

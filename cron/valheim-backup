@@ -1,3 +1,4 @@
 # /etc/cron.d/valheim-backup
-# Runs the world backup every day at 05:00 server time.
-0 5 * * * root /usr/local/bin/valheim-backup.sh
+# Runs the world backup every day at 08:10 server time,
+# right after the 08:00 restart, when the world has just been saved cleanly.
+10 8 * * * root /usr/local/bin/valheim-backup.sh
